@@ -1,0 +1,69 @@
+{
+  "take_id": "head-20261110-182553-07c928fc",
+  "session_id": "session-20261110-170034-4f73fe3a",
+  "kind": "head",
+  "emotion": "joie",
+  "intensity": 0.2,
+  "joints": [
+    "HeadYaw",
+    "HeadPitch"
+  ],
+  "guided_joints": [
+    "HeadYaw",
+    "HeadPitch"
+  ],
+  "driven_joints": [
+    "LShoulderPitch",
+    "LShoulderRoll",
+    "LElbowYaw",
+    "LElbowRoll",
+    "LWristYaw",
+    "RShoulderPitch",
+    "RShoulderRoll",
+    "RElbowYaw",
+    "RElbowRoll",
+    "RWristYaw"
+  ],
+  "event": {
+    "present": true,
+    "azimuth_rad": -1.0821041362364843,
+    "elevation_rad": 0.6632251157578453,
+    "frame": "torso",
+    "source": "tirage",
+    "timestamp": 1794331536.853197,
+    "confidence": null,
+    "distance_m": 0.32,
+    "unit": "rad"
+  },
+  "calibration_version": "nao-20261104-183718",
+  "config_fingerprint": "7c16854c2d81e1d2",
+  "adapter": "bridge",
+  "sample_rate_hz": 50.0,
+  "segment": [
+    0.354332228039857,
+    3.031417594035156
+  ],
+  "head_initial": [
+    -0.047595977783203125,
+    0.07819199562072754
+  ],
+  "hands_initial": null,
+  "arm_take_id": null,
+  "arm_source": null,
+  "arm_gesture_id": null,
+  "arm_generation": null,
+  "intention": null,
+  "synthetic": false,
+  "status": "accepted",
+  "annotations": {
+    "notes": "",
+    "tags": []
+  },
+  "unit": "rad",
+  "time_unit": "s",
+  "event_frame": "torso",
+  "created_at": "2026-11-10T18:25:53",
+  "format_version": 1,
+  "n_samples": 205,
+  "duration_s": 4.080112586962059
+}
