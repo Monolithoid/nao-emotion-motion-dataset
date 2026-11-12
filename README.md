@@ -1,3 +1,10 @@
+<h1>
+  <img src="./assets/nao-emotion-motion-dataset-icon.png" alt="" width="48" height="48" align="middle">
+  nao-emotion-motion-dataset
+</h1>
+
+![NAO V4 performing a demonstrated gesture, with sampled motion points and an optional event target](./assets/nao-emotion-motion-dataset-social.jpg)
+
 ---
 license: cc-by-4.0
 task_categories:
