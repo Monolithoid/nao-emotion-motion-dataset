@@ -22,7 +22,7 @@ pretty_name: nao-emotion-motion-dataset
 
 Version 2026-11-11. Expressive gestures demonstrated on a real NAO robot (NAO V4, NAOqi 2.1), recorded with [nao-emotion-motion](https://github.com/Monolithoid/nao-emotion-motion). Each take is a short movement performed for a prompt: an emotion, an intensity in [0, 1], and an optional event (a point the robot reacts to, given as azimuth, elevation and distance in the torso frame). The goal is to train generators (emotion + intensity + event -> gesture), not emotion recognisers.
 
-Author: Joachim
+Author: Monolithoid
 
 ## Content
 
