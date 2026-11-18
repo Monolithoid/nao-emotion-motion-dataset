@@ -1,10 +1,3 @@
-<h1>
-  <img src="./assets/nao-emotion-motion-dataset-icon.png" alt="" width="48" height="48" align="middle">
-  nao-emotion-motion-dataset
-</h1>
-
-![NAO V4 performing a demonstrated gesture, with sampled motion points and an optional event target](./assets/nao-emotion-motion-dataset-social.jpg)
-
 ---
 license: cc-by-4.0
 task_categories:
@@ -20,23 +13,23 @@ pretty_name: nao-emotion-motion-dataset
 
 # nao-emotion-motion-dataset
 
-Version 2026-11-11. Expressive gestures demonstrated on a real NAO robot (NAO V4, NAOqi 2.1), recorded with [nao-emotion-motion](https://github.com/Monolithoid/nao-emotion-motion). Each take is a short movement performed for a prompt: an emotion, an intensity in [0, 1], and an optional event (a point the robot reacts to, given as azimuth, elevation and distance in the torso frame). The goal is to train generators (emotion + intensity + event -> gesture), not emotion recognisers.
+Version 2026-11-18. Expressive gestures demonstrated on a real NAO robot (NAO V4, NAOqi 2.1), recorded with [nao-emotion-motion](https://github.com/Monolithoid/nao-emotion-motion). Each take is a short movement performed for a prompt: an emotion, an intensity in [0, 1], and an optional event (a point the robot reacts to, given as azimuth, elevation and distance in the torso frame). The goal is to train generators (emotion + intensity + event -> gesture), not emotion recognisers.
 
-Author: Joachim
+
 
 ## Content
 
 | Group | Takes | With event | Total duration (s) | Joints |
 |---|---|---|---|---|
-| arms | 42 | 39 | 188.9 | LShoulderPitch, LShoulderRoll, LElbowYaw, LElbowRoll, LWristYaw, RShoulderPitch, RShoulderRoll, RElbowYaw, RElbowRoll, RWristYaw |
-| head | 40 | 40 | 199.6 | HeadYaw, HeadPitch |
-| hands | 7 | 7 | 33.9 | LHand, RHand |
+| arms | 168 | 57 | 801.7 | LShoulderPitch, LShoulderRoll, LElbowYaw, LElbowRoll, LWristYaw, RShoulderPitch, RShoulderRoll, RElbowYaw, RElbowRoll, RWristYaw |
+| head | 78 | 60 | 382.8 | HeadYaw, HeadPitch |
+| hands | 17 | 7 | 75.4 | LHand, RHand |
 
 Takes per emotion:
 
-- arms: calme 6, colere 8, joie 7, peur 8, surprise 6, tristesse 7
-- hands: calme 2, colere 1, joie 1, peur 1, surprise 1, tristesse 1
-- head: calme 6, colere 7, joie 7, peur 7, surprise 7, tristesse 6
+- arms: calme 27, colere 28, joie 28, peur 29, surprise 28, tristesse 28
+- hands: calme 3, colere 3, joie 3, peur 2, surprise 3, tristesse 3
+- head: calme 13, colere 15, joie 12, peur 13, surprise 13, tristesse 12
 
 Groups:
 
@@ -72,6 +65,14 @@ To use the takes with the project: `nao-motion import-dataset <this folder>`, th
 ## Calibrations
 
 - `nao-20261104-183718`
+- `nao-20261116-185555-takes`
+
+## Models
+
+`models/<group>/model.pt` (PyTorch) and `model_numpy.npz` (numpy only), last training of each group at export time:
+
+- arms: run `arms-20261118-113406-202159`
+- head: run `head-20261116-192305-033451`
 
 ## License
 
