@@ -48,6 +48,8 @@ takes/<take_id>/samples.npz   t (N,) in s ; q (N, J) MEASURED positions in rad ;
 index.csv                     one row per take
 calibration/*.yaml            joint limits measured on the robot (cited by meta.calibration_version)
 configs/                      emotions.yaml, joints.yaml
+models/<group>/               trained models (PyTorch and numpy)
+generator/                    nao_gesture.py + nao_gesture.json: the models, ready to use
 dataset.json                  manifest with sha256 of every file
 ```
 
@@ -62,17 +64,40 @@ t, q, joints = z['t'], z['q'], list(z['joints'])
 
 To use the takes with the project: `nao-motion import-dataset <this folder>`, then `nao-motion train`.
 
+## Ready-to-use gesture generator
+
+`generator/` holds the trained models as two files to copy into another project, nothing to install: `nao_gesture.py` (generator + safety guardian, Python 2.7 and 3, standard library only: no PyTorch, no numpy, runs on the robot's own Python) and `nao_gesture.json` (network weights, settings, guardian limits). Models: arms (run `arms-20261118-183352-046037`), head (run `head-20261118-183321-706651`), hands (run `hands-20261118-183300-494736`). Guardian limits: calibration `nao-20261118-183149` of the robot the takes were recorded on; another NAO should be calibrated and the generator re-exported with the project (`nao-motion export-generator`).
+
+```python
+from nao_gesture import GestureGenerator
+gen = GestureGenerator.load('generator/nao_gesture.json')
+print(gen.emotions)
+g = gen.generate('joie', 0.7,                       # emotion (or a mix {'joie': 0.7, 'surprise': 0.3}), intensity 0..1
+                 event={'azimuth_deg': 30, 'elevation_deg': 0, 'distance_m': 1.2},  # optional, torso frame
+                 current_pose=measured_posture)     # {joint: rad}, adds the transitions
+if g.ok:                                            # accepted by the guardian
+    names, angles, times = g.angle_interpolation()
+    motion.angleInterpolation(names, angles, times, True)   # ALMotion, absolute angles
+else:
+    print(g.report.summary())                       # never send a refused gesture
+```
+
+Azimuth is positive to the robot's left, elevation positive up, 0 = straight ahead. Without `current_pose`, only the gesture is returned and the robot must be brought to the start position first. The library never commands the robot itself. Quick check from a shell: `python generator/nao_gesture.py generator/nao_gesture.json joie 0.7 30 0 1.2` (exit code 0 accepted, 1 refused). Full documentation: [Gesture generator library](https://github.com/Monolithoid/nao-emotion-motion#gesture-generator-library-export-for-another-project).
+
 ## Calibrations
 
 - `nao-20261104-183718`
 - `nao-20261116-185555-takes`
 
+156 take(s) were recorded before the first calibration (`calibration_version` is the placeholder name of `configs/joints.yaml`): their positions are measured like the others, only no calibration file goes with them.
+
 ## Models
 
 `models/<group>/model.pt` (PyTorch) and `model_numpy.npz` (numpy only), last training of each group at export time:
 
-- arms: run `arms-20261118-113406-202159`
-- head: run `head-20261116-192305-033451`
+- arms: run `arms-20261118-183352-046037`
+- head: run `head-20261118-183321-706651`
+- hands: run `hands-20261118-183300-494736`
 
 ## License
 

@@ -2,7 +2,7 @@
   "format": 1,
   "name": "nao-emotion-motion-dataset",
   "version": "2026-11-18",
-  "exported_at": "2026-11-18T18:03:47",
+  "exported_at": "2026-11-18T18:34:34",
   "license": "CC-BY-4.0",
   "take_format_version": 1,
   "filters": {
@@ -89,15 +89,13 @@
   },
   "calibrations": [
     "nao-20261104-183718",
-    "nao-20261116-185555-takes",
-    "placeholder-0"
+    "nao-20261116-185555-takes"
   ],
-  "missing_calibrations": [
-    "placeholder-0"
-  ],
+  "missing_calibrations": [],
+  "uncalibrated_takes": 156,
   "models": {
     "arms": {
-      "run": "arms-20261118-113406-202159",
+      "run": "arms-20261118-183352-046037",
       "files": [
         "model.pt",
         "model_numpy.npz",
@@ -106,7 +104,16 @@
       ]
     },
     "head": {
-      "run": "head-20261116-192305-033451",
+      "run": "head-20261118-183321-706651",
+      "files": [
+        "model.pt",
+        "model_numpy.npz",
+        "metrics.json",
+        "split.json"
+      ]
+    },
+    "hands": {
+      "run": "hands-20261118-183300-494736",
       "files": [
         "model.pt",
         "model_numpy.npz",
@@ -115,24 +122,44 @@
       ]
     }
   },
+  "generator": {
+    "files": [
+      "generator/nao_gesture.py",
+      "generator/nao_gesture.json"
+    ],
+    "models": {
+      "arms": "arms-20261118-183352-046037",
+      "head": "head-20261118-183321-706651",
+      "hands": "hands-20261118-183300-494736"
+    },
+    "missing": [],
+    "calibration_version": "nao-20261118-183149",
+    "warnings": []
+  },
   "files": {
     "LICENSE": "dc725d2b97f6352ee0ed2e9677fe02dbd635ac17708aa2c29a0f455bb0ebeee4",
-    "README.md": "dfe57b6fc11418001e478eb71fb2e6512d2ddab41c0ca2d982dad7084910d5a2",
+    "README.md": "3b019bcad2fd17bd6bef063f8d82d7268ee2779c6c25c994b2a3bdffa82d41ed",
     "assets/nao-emotion-motion-dataset-icon.png": "f34d92dee0e281c65205bf8ca2b84bcdf430c6493edaffdeb5d646012a27c81c",
     "assets/nao-emotion-motion-dataset-social.jpg": "429beb34da64501d1e06e9dbc0cec6136cb3e3df867ab4b87023fbaff61758e6",
     "calibration/nao-20261104-183718.yaml": "55ff4381c970f79ccabdba5163a4efca8dd0565f1c291cb2be3067e9c1640e14",
     "calibration/nao-20261116-185555-takes.yaml": "28e1ff1a9c8c68b5792132d611c3e01f5e172e665b8ba5b61800b130cbccb526",
     "configs/emotions.yaml": "ce982da054bb0529fb9c140921c6eb6a19644ecbd64503888c4105fe1e257f87",
     "configs/joints.yaml": "910b26933a988f1dc7c49bf567b6c3282d5d6b6c9ba2a14b30e421c7c55757fe",
+    "generator/nao_gesture.json": "ce6024ffbd081e50cdd0eef0447c0e18f0ce47192edd36dd494bc653dee4c6a6",
+    "generator/nao_gesture.py": "4e52ca1fb7801250047d7f4b5d6b86ab09ffc589593011d95955e1daae853f75",
     "index.csv": "7c3677fc64168e6818b15fa27e423d554ad54e180019fc3abc7c13cdb601d272",
-    "models/arms/metrics.json": "39fed66ab84bd1c0194933102252fc464a400df4c40b081628e9471764c20ee7",
-    "models/arms/model.pt": "7dbcc3d58fe8619eb41038f6111f5bd2043bfd5d50ffc1deed66523266136fda",
-    "models/arms/model_numpy.npz": "29ac051db84c8e6e9b5289155e09c62770616799155f4636a59d8d450c5522b1",
-    "models/arms/split.json": "9e9da7f4da97ec2617048e0061c89201cb69c8c955e87619ea323ce205c60775",
-    "models/head/metrics.json": "9714581fbe83aac69cf5fdd3c2c90c128b796c1f1aee6c71318fbde850756bd5",
-    "models/head/model.pt": "cd53548e7d61316b50da64a14f7203749cedde41d0d968f62a98254031e32cc2",
-    "models/head/model_numpy.npz": "f9660567e17fa222d49ee51fdcc734b2962de0f45daf1dd0d664d4215d231514",
-    "models/head/split.json": "328249a7e0e6794923bdfbf0ac9a0967704696553d39a61c1a1d52877646dcff",
+    "models/arms/metrics.json": "d3d50c772caee74a58bf10fea7b6c611815aef0c854f99973bf6b690e467435a",
+    "models/arms/model.pt": "a5ef68af18ea82052f5d6c17ec80a60b7ce0d3305c55a8be3638335b1455736a",
+    "models/arms/model_numpy.npz": "3644c659094fc536ad88f9221ae7ed5a698e3fd2c90766ed3ad5c5f2fe355659",
+    "models/arms/split.json": "6ee9cbc62c45648bb22acdebabba1cd2ed81dfcf739c5c6adcf5743681f0180e",
+    "models/hands/metrics.json": "6a441671d9cb7b99a2a319259fdf51a1819b77f51e2719e16a56f782f895df98",
+    "models/hands/model.pt": "31cf19e9ddd5f7136cb54f3766a0c2aa34f6a0b1c0b50a493394d55234a96953",
+    "models/hands/model_numpy.npz": "003997e8cda3a17b1c2aa1adc96a419bd544f7896658999dddeb9d22773b322c",
+    "models/hands/split.json": "54d2455285293b6ffa9d9bd922878207bdd86b95ceceb01014943e969de3163a",
+    "models/head/metrics.json": "1f0441cd2b87a0919a3ee75c6f8009e55fcdcbf728168a6092b91f554359387f",
+    "models/head/model.pt": "1852115affb41c474ebaaf63cb7afe00b87b2514845f56d1fd41fe0981824966",
+    "models/head/model_numpy.npz": "2715ee857d01c195e495f33fba43428cce0acb07f7d150cc23f48ab767aa78d4",
+    "models/head/split.json": "0c0da1b6cc63195b036fcf91cfaf9b1fec76aae42b26c1645054650613b418ad",
     "takes/arms-20261104-185513-11ae4b6b/meta.json": "6cf98250fec89e7a23c950f3fc3f258774c700d82e4efd1131d449d28d171945",
     "takes/arms-20261104-185513-11ae4b6b/samples.npz": "e19753f2384fa0818ec077bf8b86c485c3ae69a6b6d3324081a81a627fc636ef",
     "takes/arms-20261104-185541-e17d3613/meta.json": "9ab071953f09ff0e52e89eda90880bacdcedaccbe8bd56d4489127096176d47c",
