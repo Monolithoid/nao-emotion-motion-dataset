@@ -1,70 +1,70 @@
 {
-  "take_id": "hands-20261116-182535-518ffadf",
-  "session_id": "session-20261116-181235-3b4435b7",
-  "kind": "hands",
-  "emotion": "tristesse",
-  "intensity": 0.15,
-  "joints": [
-    "LHand",
-    "RHand"
-  ],
-  "guided_joints": [],
-  "driven_joints": [
-    "LShoulderPitch",
-    "LShoulderRoll",
-    "LElbowYaw",
-    "LElbowRoll",
-    "LWristYaw",
-    "RShoulderPitch",
-    "RShoulderRoll",
-    "RElbowYaw",
-    "RElbowRoll",
-    "RWristYaw",
-    "HeadYaw",
-    "HeadPitch",
-    "LHand",
-    "RHand"
-  ],
-  "event": {
-    "present": false,
-    "azimuth_rad": null,
-    "elevation_rad": null,
-    "frame": "torso",
-    "source": "none",
-    "timestamp": 1794849155.2028546,
-    "confidence": null,
-    "distance_m": null,
-    "unit": "rad"
-  },
-  "calibration_version": "nao-20261104-183718",
-  "config_fingerprint": "7c16854c2d81e1d2",
-  "adapter": "bridge",
-  "sample_rate_hz": 50.0,
-  "segment": [
-    0.5304418189967691,
-    5.190839517999848
-  ],
-  "head_initial": null,
-  "hands_initial": [
-    0.4875999689102173,
-    0.4864000082015991
-  ],
-  "arm_take_id": null,
-  "arm_source": null,
-  "arm_gesture_id": null,
-  "arm_generation": null,
-  "intention": null,
-  "synthetic": false,
-  "status": "accepted",
-  "annotations": {
-    "notes": "",
-    "tags": []
-  },
-  "unit": "rad",
-  "time_unit": "s",
-  "event_frame": "torso",
-  "created_at": "2026-11-16T18:25:35",
-  "format_version": 1,
-  "n_samples": 132,
-  "duration_s": 5.190838308000821
+ "take_id": "hands-20261116-182535-518ffadf",
+ "session_id": "session-20261116-181235-3b4435b7",
+ "kind": "hands",
+ "emotion": "sadness",
+ "intensity": 0.15,
+ "joints": [
+  "LHand",
+  "RHand"
+ ],
+ "guided_joints": [],
+ "driven_joints": [
+  "LShoulderPitch",
+  "LShoulderRoll",
+  "LElbowYaw",
+  "LElbowRoll",
+  "LWristYaw",
+  "RShoulderPitch",
+  "RShoulderRoll",
+  "RElbowYaw",
+  "RElbowRoll",
+  "RWristYaw",
+  "HeadYaw",
+  "HeadPitch",
+  "LHand",
+  "RHand"
+ ],
+ "event": {
+  "present": false,
+  "azimuth_rad": null,
+  "elevation_rad": null,
+  "frame": "torso",
+  "source": "none",
+  "timestamp": 1794849155.2028546,
+  "confidence": null,
+  "distance_m": null,
+  "unit": "rad"
+ },
+ "calibration_version": "nao-20261104-183718",
+ "config_fingerprint": "7c16854c2d81e1d2",
+ "adapter": "bridge",
+ "sample_rate_hz": 50.0,
+ "segment": [
+  0.5304418189967691,
+  5.190839517999848
+ ],
+ "head_initial": null,
+ "hands_initial": [
+  0.4875999689102173,
+  0.4864000082015991
+ ],
+ "arm_take_id": null,
+ "arm_source": null,
+ "arm_gesture_id": null,
+ "arm_generation": null,
+ "intention": null,
+ "synthetic": false,
+ "status": "accepted",
+ "annotations": {
+  "notes": "",
+  "tags": []
+ },
+ "unit": "rad",
+ "time_unit": "s",
+ "event_frame": "torso",
+ "created_at": "2026-11-16T18:25:35",
+ "format_version": 1,
+ "n_samples": 132,
+ "duration_s": 5.190838308000821
 }

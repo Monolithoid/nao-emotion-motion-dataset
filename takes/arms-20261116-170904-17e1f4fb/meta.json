@@ -1,74 +1,74 @@
 {
-  "take_id": "arms-20261116-170904-17e1f4fb",
-  "session_id": "session-20261116-170617-d6ccba97",
-  "kind": "arms",
-  "emotion": "colere",
-  "intensity": 1.0,
-  "joints": [
-    "LShoulderPitch",
-    "LShoulderRoll",
-    "LElbowYaw",
-    "LElbowRoll",
-    "LWristYaw",
-    "RShoulderPitch",
-    "RShoulderRoll",
-    "RElbowYaw",
-    "RElbowRoll",
-    "RWristYaw"
-  ],
-  "guided_joints": [
-    "LShoulderPitch",
-    "LShoulderRoll",
-    "LElbowYaw",
-    "LElbowRoll",
-    "LWristYaw",
-    "RShoulderPitch",
-    "RShoulderRoll",
-    "RElbowYaw",
-    "RElbowRoll",
-    "RWristYaw"
-  ],
-  "driven_joints": [
-    "HeadYaw",
-    "HeadPitch"
-  ],
-  "event": {
-    "present": false,
-    "azimuth_rad": null,
-    "elevation_rad": null,
-    "frame": "torso",
-    "source": "none",
-    "timestamp": 1794845177.5223973,
-    "confidence": null,
-    "distance_m": null,
-    "unit": "rad"
-  },
-  "calibration_version": "placeholder-0",
-  "config_fingerprint": "682babd948418fe6",
-  "adapter": "bridge",
-  "sample_rate_hz": 50.0,
-  "segment": [
-    0.9701782179996371,
-    5.457302028999402
-  ],
-  "head_initial": null,
-  "hands_initial": null,
-  "arm_take_id": null,
-  "arm_source": null,
-  "arm_gesture_id": null,
-  "arm_generation": null,
-  "intention": null,
-  "synthetic": false,
-  "status": "accepted",
-  "annotations": {
-    "notes": "",
-    "tags": []
-  },
-  "unit": "rad",
-  "time_unit": "s",
-  "event_frame": "torso",
-  "created_at": "2026-11-16T17:09:04",
-  "format_version": 1,
-  "n_samples": 272,
-  "duration_s": 5.82805311499942
+ "take_id": "arms-20261116-170904-17e1f4fb",
+ "session_id": "session-20261116-170617-d6ccba97",
+ "kind": "arms",
+ "emotion": "anger",
+ "intensity": 1.0,
+ "joints": [
+  "LShoulderPitch",
+  "LShoulderRoll",
+  "LElbowYaw",
+  "LElbowRoll",
+  "LWristYaw",
+  "RShoulderPitch",
+  "RShoulderRoll",
+  "RElbowYaw",
+  "RElbowRoll",
+  "RWristYaw"
+ ],
+ "guided_joints": [
+  "LShoulderPitch",
+  "LShoulderRoll",
+  "LElbowYaw",
+  "LElbowRoll",
+  "LWristYaw",
+  "RShoulderPitch",
+  "RShoulderRoll",
+  "RElbowYaw",
+  "RElbowRoll",
+  "RWristYaw"
+ ],
+ "driven_joints": [
+  "HeadYaw",
+  "HeadPitch"
+ ],
+ "event": {
+  "present": false,
+  "azimuth_rad": null,
+  "elevation_rad": null,
+  "frame": "torso",
+  "source": "none",
+  "timestamp": 1794845177.5223973,
+  "confidence": null,
+  "distance_m": null,
+  "unit": "rad"
+ },
+ "calibration_version": "placeholder-0",
+ "config_fingerprint": "682babd948418fe6",
+ "adapter": "bridge",
+ "sample_rate_hz": 50.0,
+ "segment": [
+  0.9701782179996371,
+  5.457302028999402
+ ],
+ "head_initial": null,
+ "hands_initial": null,
+ "arm_take_id": null,
+ "arm_source": null,
+ "arm_gesture_id": null,
+ "arm_generation": null,
+ "intention": null,
+ "synthetic": false,
+ "status": "accepted",
+ "annotations": {
+  "notes": "",
+  "tags": []
+ },
+ "unit": "rad",
+ "time_unit": "s",
+ "event_frame": "torso",
+ "created_at": "2026-11-16T17:09:04",
+ "format_version": 1,
+ "n_samples": 272,
+ "duration_s": 5.82805311499942
 }

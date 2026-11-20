@@ -193,13 +193,12 @@
       "total": 72,
       "rate": 1.0,
       "violations_by_code": {},
-      "raw_accepted": 2,
+      "raw_accepted": 3,
       "raw_violations_by_code": {
-        "velocity": 88,
-        "acceleration": 124,
-        "limit": 5
+        "velocity": 94,
+        "acceleration": 126
       },
-      "median_slow_down": 1.24
+      "median_slow_down": 1.21
     },
     "guardian_takes": {
       "total": 17,

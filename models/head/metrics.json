@@ -256,12 +256,12 @@
       "violations_by_code": {},
       "raw_accepted": 5,
       "raw_violations_by_code": {
-        "velocity": 62,
-        "acceleration": 116,
-        "limit": 3,
-        "coupled": 5
+        "velocity": 60,
+        "acceleration": 110,
+        "limit": 1,
+        "coupled": 2
       },
-      "median_slow_down": 1.19
+      "median_slow_down": 1.16
     },
     "guardian_takes": {
       "total": 78,
