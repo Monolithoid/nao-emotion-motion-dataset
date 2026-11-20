@@ -2,7 +2,7 @@
   "format": 1,
   "name": "nao-emotion-motion-dataset",
   "version": "2026-11-20",
-  "exported_at": "2026-11-20T09:55:19",
+  "exported_at": "2026-11-20T10:57:17",
   "license": "CC-BY-4.0",
   "take_format_version": 1,
   "filters": {
@@ -95,7 +95,7 @@
   "uncalibrated_takes": 156,
   "models": {
     "arms": {
-      "run": "arms-20261120-094727-510351",
+      "run": "arms-20261120-105302-826469",
       "files": [
         "model.pt",
         "model_numpy.npz",
@@ -128,7 +128,7 @@
       "generator/nao_gesture.json"
     ],
     "models": {
-      "arms": "arms-20261120-094727-510351",
+      "arms": "arms-20261120-105302-826469",
       "head": "head-20261120-094747-792560",
       "hands": "hands-20261120-094804-474648"
     },
@@ -137,20 +137,20 @@
     "warnings": []
   },
   "files": {
-    "LICENSE": "aa6a6f49c8e2387839dfe7c8799d7b3127f0e001ec17df532d77976b6122f810",
-    "README.md": "d0547a94a9290bde2c4c171070c064c07d3a8415a6c0a219d4d006605ae609be",
+    "LICENSE": "1c4cdefa27f8f52c0c178baac361835f102ea081e2647c9ed14c7b0b1f57ed35",
+    "README.md": "9ddf7ba3c9236a2d7c0758e51cc0620f63403cc30df99f3eb98511379e24eeb9",
     "assets/nao-emotion-motion-dataset-icon.png": "f34d92dee0e281c65205bf8ca2b84bcdf430c6493edaffdeb5d646012a27c81c",
     "assets/nao-emotion-motion-dataset-social.jpg": "429beb34da64501d1e06e9dbc0cec6136cb3e3df867ab4b87023fbaff61758e6",
     "calibration/nao-20261104-183718.yaml": "55ff4381c970f79ccabdba5163a4efca8dd0565f1c291cb2be3067e9c1640e14",
     "calibration/nao-20261116-185555-takes.yaml": "28e1ff1a9c8c68b5792132d611c3e01f5e172e665b8ba5b61800b130cbccb526",
     "configs/emotions.yaml": "4c27a230d10179ebf1d7aab3cfea0a53c46cfa2624c9d8e37e801ed4777f5daf",
     "configs/joints.yaml": "fba0a885fe6e56ffe48635c958305282a76e39d0e634f41d8fe8f2bc75aa7c68",
-    "generator/nao_gesture.json": "d4e2e871c12f74d356388acfcfd6fc03a45f9ae82836510ed219cf6238e60044",
-    "generator/nao_gesture.py": "0443c732a7b17dd2d66e5736e29129e7d60afd08277398f2dbc65c70d912e29c",
+    "generator/nao_gesture.json": "dc33ad4b395e7b0e307eccff6b01205bade3dfb13955fcf2ef0e2221c79b2f88",
+    "generator/nao_gesture.py": "abc54c9fca92fef8bcbf675b83b49899bff97f7e9a95fc2c4b78ceae6fa69046",
     "index.csv": "9198101e0bd745a70aeaada0ebe1724eae559e8497979d99483d30457435d7ab",
-    "models/arms/metrics.json": "82f7209a80fe7297d2acb9e2671e21071fff105582cccc95e11b66575599d616",
-    "models/arms/model.pt": "1b7b353b62e52ede00e8952751fe801c96a0cd79004a48c17e376076b458fbd5",
-    "models/arms/model_numpy.npz": "b9190483212ce2263c810edd8a5149471b42c5fc3649ac71b39c837dae88cd97",
+    "models/arms/metrics.json": "8d953197f9d59881ea0927f7936aa5875d9af5fe336a23407d31de795da0707f",
+    "models/arms/model.pt": "3cd6af003e92df4bf39cb01caffb2520bf2a513d1bc71379ae8ee0d680cb4877",
+    "models/arms/model_numpy.npz": "2d5af56654d339e0619d5b05d9aed76f7836e8f7b051b16ef02933b156f5ef20",
     "models/arms/split.json": "6ee9cbc62c45648bb22acdebabba1cd2ed81dfcf739c5c6adcf5743681f0180e",
     "models/hands/metrics.json": "baa198abad30a15bac7d2cf30c2beeb5624689715a2d328f0b8f895dcd37b317",
     "models/hands/model.pt": "cd26d75c30892785e60f59b44622608c8e335d0c0cabd7187f9351f60e0f4df4",

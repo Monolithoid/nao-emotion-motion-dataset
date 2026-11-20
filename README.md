@@ -15,7 +15,7 @@ pretty_name: nao-emotion-motion-dataset
 
 Version 2026-11-20. Expressive gestures demonstrated on a real NAO robot (NAO V4, NAOqi 2.1), recorded with [nao-emotion-motion](https://github.com/Monolithoid/nao-emotion-motion). Each take is a short movement performed for a prompt: an emotion, an intensity in [0, 1], and an optional event (a point the robot reacts to, given as azimuth, elevation and distance in the torso frame). The goal is to train generators (emotion + intensity + event -> gesture), not emotion recognisers.
 
-Author: monolithoid
+Author: Monolithoid
 
 ## Content
 
@@ -66,7 +66,7 @@ To use the takes with the project: `nao-motion import-dataset <this folder>`, th
 
 ## Ready-to-use gesture generator
 
-`generator/` holds the trained models as two files to copy into another project, nothing to install: `nao_gesture.py` (generator + safety guardian, Python 2.7 and 3, standard library only: no PyTorch, no numpy, runs on the robot's own Python) and `nao_gesture.json` (network weights, settings, guardian limits). Models: arms (run `arms-20261120-094727-510351`), head (run `head-20261120-094747-792560`), hands (run `hands-20261120-094804-474648`). Guardian limits: calibration `nao-20261118-183149` of the robot the takes were recorded on; another NAO should be calibrated and the generator re-exported with the project (`nao-motion export-generator`).
+`generator/` holds the trained models as two files to copy into another project, nothing to install: `nao_gesture.py` (generator + safety guardian, Python 2.7 and 3, standard library only: no PyTorch, no numpy, runs on the robot's own Python) and `nao_gesture.json` (network weights, settings, guardian limits). Models: arms (run `arms-20261120-105302-826469`), head (run `head-20261120-094747-792560`), hands (run `hands-20261120-094804-474648`). Guardian limits: calibration `nao-20261118-183149` of the robot the takes were recorded on; another NAO should be calibrated and the generator re-exported with the project (`nao-motion export-generator`).
 
 ```python
 from nao_gesture import GestureGenerator
@@ -95,7 +95,7 @@ Azimuth is positive to the robot's left, elevation positive up, 0 = straight ahe
 
 `models/<group>/model.pt` (PyTorch) and `model_numpy.npz` (numpy only), last training of each group at export time:
 
-- arms: run `arms-20261120-094727-510351`
+- arms: run `arms-20261120-105302-826469`
 - head: run `head-20261120-094747-792560`
 - hands: run `hands-20261120-094804-474648`
 
