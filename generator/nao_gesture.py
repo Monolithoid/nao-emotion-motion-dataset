@@ -184,10 +184,17 @@ class Guardian(object):
         self.groups = data.get("groups") or {}
         self.poses = data.get("poses") or {}
         # rest <-> start segments: rest may be outside the zone (contact); bounded by the
-        # factory limits and a reduced velocity (same rules as the project guardian)
+        # factory limits and a velocity (same rules as the project guardian): one value for
+        # every joint, or "factory" = the per-joint gesture limits (velocity_limit)
         self.rest_limits = dict((j, (float(lh[0]), float(lh[1])))
                                 for j, lh in (data.get("rest_limits") or data["limits"]).items())
-        self.rest_velocity = float(data.get("rest_velocity_rad_s", self.max_velocity))
+        rv = data.get("rest_velocity_rad_s", self.max_velocity)
+        self.rest_velocity_factory = rv == "factory"
+        if self.rest_velocity_factory:
+            # single value kept for callers of older versions: the lowest per-joint limit
+            self.rest_velocity = min([self.velocity_limit(j) for j in self.rest_limits] or [self.max_velocity])
+        else:
+            self.rest_velocity = float(rv)
         self.transition_velocity = float(data.get("transition_velocity_rad_s", self.max_velocity))
 
     @classmethod
@@ -211,6 +218,19 @@ class Guardian(object):
 
     def acceleration_limit(self, joint):
         return self.per_joint_acceleration.get(joint, self.max_acceleration)
+
+    def rest_velocity_limit(self, joint):
+        """Velocity limit of the rest <-> start segments for this joint."""
+        return self.velocity_limit(joint) if self.rest_velocity_factory else self.rest_velocity
+
+    def rest_transition_caps(self, joints):
+        """(velocity, acceleration) caps per joint used to BUILD rest <-> start segments.
+        "factory": 0.8 x the gesture limits, like the start <-> gesture transitions; otherwise
+        0.8 x rest_velocity and 0.25 x max acceleration (former rule)."""
+        if self.rest_velocity_factory:
+            return ([self.velocity_limit(j) * 0.8 for j in joints],
+                    [self.acceleration_limit(j) * 0.8 for j in joints])
+        return [self.rest_velocity * 0.8] * len(joints), [self.max_acceleration * 0.25] * len(joints)
 
     def pose(self, name):
         """Calibrated "rest" or "start" pose: {joint: rad}."""
@@ -385,7 +405,7 @@ class Guardian(object):
 
     def check_rest_transition(self, times, joints, positions, start_state=None, time_offset=0.0):
         """Rest <-> start segment, the ONLY one allowed to leave the movement zone (rest in
-        contact, arms on the knees...): factory limits, reduced velocity (rest_velocity_rad_s)
+        contact, arms on the knees...): factory limits, rest velocity (rest_velocity_rad_s)
         and acceleration; no margin, no coupled constraints. That this path is free of
         collisions is up to the calibration (start reachable from rest)."""
         try:
@@ -419,10 +439,11 @@ class Guardian(object):
         vel = [[(qs[i + 1][k] - qs[i][k]) / dt[i] for k in range(J)] for i in range(len(dt))]
         for k, j in enumerate(joints):
             i = max(range(len(vel)), key=lambda m: abs(vel[m][k]))
-            if abs(vel[i][k]) > self.rest_velocity:
+            lim = self.rest_velocity_limit(j)
+            if abs(vel[i][k]) > lim:
                 v.append(Violation("rest_velocity", "Rest <-> start segment too fast", joint=j,
                                    time_s=float(ts[i]) + time_offset, value=float(abs(vel[i][k])),
-                                   limit=self.rest_velocity))
+                                   limit=lim))
         if len(vel) >= 2:
             acc = [[(vel[i + 1][k] - vel[i][k]) / ((dt[i + 1] + dt[i]) / 2) for k in range(J)]
                    for i in range(len(vel) - 1)]
@@ -571,6 +592,14 @@ def _min_jerk(q0, q1, v_max, a_max, rate_hz=50.0, min_duration=0.4):
         h = 10 * x ** 3 - 15 * x ** 4 + 6 * x ** 5
         rows.append([a + h * (b - a) for a, b in zip(q0, q1)])
     return _traj([x * T for x in s], rows)
+
+
+def rest_segment(guardian, q0, q1, joints):
+    """Rest <-> start (or measured posture -> start) segment: minimum-jerk within the
+    guardian's rest caps (Guardian.rest_transition_caps). Public: callers bringing the robot
+    back to rest on their own (e.g. after a delay without gesture) build the same segment."""
+    v_max, a_max = guardian.rest_transition_caps(joints)
+    return _min_jerk(q0, q1, v_max, a_max)
 
 
 def _quintic(q0, v0, a0, q1, v1, a1, v_max, a_max, rate_hz=50.0, min_duration=0.4, max_duration=6.0,
@@ -1318,9 +1347,9 @@ class GestureGenerator(object):
             r = g.check_trajectory(seg["t"], joints, seg["q"], check_duration=False, context=ctx)
             return not any(x.code in ("limit", "coupled") for x in r.violations)
         if from_rest:
-            segs = [("rest_to_start", _min_jerk(q_cur, start, g.rest_velocity * 0.8, g.max_acceleration * 0.25))]
+            segs = [("rest_to_start", rest_segment(g, q_cur, start, joints))]
         else:
-            segs = [("to_start", _min_jerk(q_cur, start, g.rest_velocity * 0.8, g.max_acceleration * 0.25))]
+            segs = [("to_start", rest_segment(g, q_cur, start, joints))]
         t_in = _quintic(start, z, z, motion["q"][0], v0, a0, vlim, alim, accept=in_zone)
         t_out = _quintic(motion["q"][-1], v1, a1, start, z, z, vlim, alim, accept=in_zone)
         # no velocity-matched transition inside the zone: ease the gesture in/out (same path,
@@ -1338,8 +1367,7 @@ class GestureGenerator(object):
                          % " and ".join(x for x, y in (("in", ti), ("out", to)) if y))
         segs += [("start_to_gesture", t_in), ("gesture", motion), ("gesture_to_start", t_out)]
         if return_to == "rest":
-            segs.append(("start_to_rest", _min_jerk(start, rest, g.rest_velocity * 0.8,
-                                                    g.max_acceleration * 0.25)))
+            segs.append(("start_to_rest", rest_segment(g, start, rest, joints)))
         # validation: rest segments on their own, everything else on the continuous path it forms
         t, reports, main, main_t0, segments = 0.0, [], [], None, []
         for name, s in segs:
@@ -1363,7 +1391,7 @@ class GestureGenerator(object):
         for rep in reports:
             violations += rep.violations
         full = _concat([s for _, s in segs])
-        notes.append("Rest <-> start segments: factory limits and reduced velocity only; that they are free of "
+        notes.append("Rest <-> start segments: factory limits and rest velocity only; that they are free of "
                      "collisions is up to the calibration.")
         report = Report(not violations, violations, reports[0].stats)
         return Gesture(joints, full["t"], full["q"], report, gesture_report, segments, inputs, notes,
